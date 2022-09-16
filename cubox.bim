@@ -378,6 +378,10 @@
           {
             "name": "pecas",
             "expression": " sum(vw_f_vendas[qt_pecas_liquida])"
+          },
+          {
+            "name": "tickets",
+            "expression": " sum(vw_f_vendas[qt_ticket_venda_faturada_liquida])"
           }
         ]
       },
