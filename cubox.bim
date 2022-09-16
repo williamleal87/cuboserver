@@ -377,7 +377,7 @@
           },
           {
             "name": "pecas",
-            "expression": " sum(vw_f_vendas[qt_pecas_liquida])"
+            "expression": " sum(vw_f_vendas[qt_pecas_liquida]) --"
           }
         ]
       },
