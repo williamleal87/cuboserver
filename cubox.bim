@@ -377,7 +377,15 @@
           },
           {
             "name": "pecas",
+<<<<<<< HEAD
             "expression": " sum(vw_f_vendas[qt_pecas_liquida]) --"
+=======
+            "expression": " sum(vw_f_vendas[qt_pecas_liquida])"
+          },
+          {
+            "name": "tickets",
+            "expression": " sum(vw_f_vendas[qt_ticket_venda_faturada_liquida])"
+>>>>>>> 89ad9d2f92a08cdc807815b66309ef808ada35fb
           }
         ]
       },
