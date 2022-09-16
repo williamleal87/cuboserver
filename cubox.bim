@@ -1,0 +1,535 @@
+{
+  "name": "versionamento",
+  "compatibilityLevel": 1500,
+  "model": {
+    "name": "cubox",
+    "culture": "pt-BR",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/synw-tf-bia sql azuresynapse net;syndp_tf_bia_edw",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "synw-tf-bia.sql.azuresynapse.net",
+            "database": "syndp_tf_bia_edw"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "synw-tf-bia.sql.azuresynapse.net;syndp_tf_bia_edw",
+          "Username": "sqladminuser",
+          "EncryptConnection": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "vw_f_vendas",
+        "columns": [
+          {
+            "name": "nk_filial",
+            "dataType": "string",
+            "sourceColumn": "nk_filial"
+          },
+          {
+            "name": "fk_tempo_venda",
+            "dataType": "int64",
+            "sourceColumn": "fk_tempo_venda"
+          },
+          {
+            "name": "dt_criacao",
+            "dataType": "dateTime",
+            "sourceColumn": "dt_criacao"
+          },
+          {
+            "name": "dt_venda",
+            "dataType": "dateTime",
+            "sourceColumn": "dt_venda"
+          },
+          {
+            "name": "fk_filial",
+            "dataType": "int64",
+            "sourceColumn": "fk_filial"
+          },
+          {
+            "name": "fk_vendedor",
+            "dataType": "int64",
+            "sourceColumn": "fk_vendedor"
+          },
+          {
+            "name": "fk_cliente_varejo",
+            "dataType": "int64",
+            "sourceColumn": "fk_cliente_varejo"
+          },
+          {
+            "name": "fk_chave_composta",
+            "dataType": "string",
+            "sourceColumn": "fk_chave_composta"
+          },
+          {
+            "name": "fk_tipo_filial",
+            "dataType": "int64",
+            "sourceColumn": "fk_tipo_filial"
+          },
+          {
+            "name": "fk_canal_venda",
+            "dataType": "int64",
+            "sourceColumn": "fk_canal_venda"
+          },
+          {
+            "name": "fk_motivo_cancelamento",
+            "dataType": "int64",
+            "sourceColumn": "fk_motivo_cancelamento"
+          },
+          {
+            "name": "fk_experiencia",
+            "dataType": "int64",
+            "sourceColumn": "fk_experiencia"
+          },
+          {
+            "name": "in_carrinho_misto",
+            "dataType": "boolean",
+            "sourceColumn": "in_carrinho_misto"
+          },
+          {
+            "name": "in_omnichat",
+            "dataType": "boolean",
+            "sourceColumn": "in_omnichat"
+          },
+          {
+            "name": "vl_venda_faturada_bruta",
+            "dataType": "double",
+            "sourceColumn": "vl_venda_faturada_bruta"
+          },
+          {
+            "name": "vl_venda_faturada_troca",
+            "dataType": "double",
+            "sourceColumn": "vl_venda_faturada_troca"
+          },
+          {
+            "name": "vl_venda_faturada_cancelada",
+            "dataType": "double",
+            "sourceColumn": "vl_venda_faturada_cancelada"
+          },
+          {
+            "name": "vl_venda_faturada_liquida",
+            "dataType": "double",
+            "sourceColumn": "vl_venda_faturada_liquida"
+          },
+          {
+            "name": "qt_ticket_venda_faturada_bruta",
+            "dataType": "double",
+            "sourceColumn": "qt_ticket_venda_faturada_bruta"
+          },
+          {
+            "name": "qt_ticket_venda_faturada_troca",
+            "dataType": "double",
+            "sourceColumn": "qt_ticket_venda_faturada_troca"
+          },
+          {
+            "name": "qt_ticket_venda_faturada_cancelado",
+            "dataType": "double",
+            "sourceColumn": "qt_ticket_venda_faturada_cancelado"
+          },
+          {
+            "name": "qt_ticket_venda_faturada_liquida",
+            "dataType": "double",
+            "sourceColumn": "qt_ticket_venda_faturada_liquida"
+          },
+          {
+            "name": "qt_pecas_bruto",
+            "dataType": "int64",
+            "sourceColumn": "qt_pecas_bruto"
+          },
+          {
+            "name": "qt_pecas_liquida",
+            "dataType": "int64",
+            "sourceColumn": "qt_pecas_liquida"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/synw-tf-bia sql azuresynapse net;syndp_tf_bia_edw\",",
+                "    dbo_vw_f_vendas = Source{[Schema=\"dbo\",Item=\"vw_f_vendas\"]}[Data]",
+                "in",
+                "    dbo_vw_f_vendas"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vw_d_filial",
+        "columns": [
+          {
+            "name": "sk_filial",
+            "dataType": "int64",
+            "sourceColumn": "sk_filial"
+          },
+          {
+            "name": "nk_filial",
+            "dataType": "string",
+            "sourceColumn": "nk_filial"
+          },
+          {
+            "name": "nk_filial_referencia",
+            "dataType": "string",
+            "sourceColumn": "nk_filial_referencia"
+          },
+          {
+            "name": "nk_filial_atual",
+            "dataType": "string",
+            "sourceColumn": "nk_filial_atual"
+          },
+          {
+            "name": "fk_tipo_filial",
+            "dataType": "int64",
+            "sourceColumn": "fk_tipo_filial"
+          },
+          {
+            "name": "nm_regiao",
+            "dataType": "string",
+            "sourceColumn": "nm_regiao"
+          },
+          {
+            "name": "nm_estado",
+            "dataType": "string",
+            "sourceColumn": "nm_estado"
+          },
+          {
+            "name": "sg_Uf",
+            "dataType": "string",
+            "sourceColumn": "sg_Uf"
+          },
+          {
+            "name": "nm_municipio",
+            "dataType": "string",
+            "sourceColumn": "nm_municipio"
+          },
+          {
+            "name": "nm_filial",
+            "dataType": "string",
+            "sourceColumn": "nm_filial"
+          },
+          {
+            "name": "nm_filial_atual",
+            "dataType": "string",
+            "sourceColumn": "nm_filial_atual"
+          },
+          {
+            "name": "nm_supervisor_loja",
+            "dataType": "string",
+            "sourceColumn": "nm_supervisor_loja"
+          },
+          {
+            "name": "nm_supervisor_loja_atual",
+            "dataType": "string",
+            "sourceColumn": "nm_supervisor_loja_atual"
+          },
+          {
+            "name": "nm_supervisor_regional",
+            "dataType": "string",
+            "sourceColumn": "nm_supervisor_regional"
+          },
+          {
+            "name": "nm_supervisor_regional_atual",
+            "dataType": "string",
+            "sourceColumn": "nm_supervisor_regional_atual"
+          },
+          {
+            "name": "nm_grupo_economico",
+            "dataType": "string",
+            "sourceColumn": "nm_grupo_economico"
+          },
+          {
+            "name": "nm_grupo_economico_atual",
+            "dataType": "string",
+            "sourceColumn": "nm_grupo_economico_atual"
+          },
+          {
+            "name": "nm_grupo_economico_atual_apres",
+            "dataType": "string",
+            "sourceColumn": "nm_grupo_economico_atual_apres"
+          },
+          {
+            "name": "ds_cluster",
+            "dataType": "string",
+            "sourceColumn": "ds_cluster"
+          },
+          {
+            "name": "in_outlet",
+            "dataType": "boolean",
+            "sourceColumn": "in_outlet"
+          },
+          {
+            "name": "in_omni",
+            "dataType": "boolean",
+            "sourceColumn": "in_omni"
+          },
+          {
+            "name": "in_abrangente",
+            "dataType": "boolean",
+            "sourceColumn": "in_abrangente"
+          },
+          {
+            "name": "in_real_time",
+            "dataType": "boolean",
+            "sourceColumn": "in_real_time"
+          },
+          {
+            "name": "in_near_realtime",
+            "dataType": "boolean",
+            "sourceColumn": "in_near_realtime"
+          },
+          {
+            "name": "in_historical",
+            "dataType": "boolean",
+            "sourceColumn": "in_historical"
+          },
+          {
+            "name": "dt_primeira_venda",
+            "dataType": "dateTime",
+            "sourceColumn": "dt_primeira_venda"
+          },
+          {
+            "name": "dt_ultima_venda",
+            "dataType": "dateTime",
+            "sourceColumn": "dt_ultima_venda"
+          },
+          {
+            "name": "qtd_dias_sem_vendas",
+            "dataType": "int64",
+            "sourceColumn": "qtd_dias_sem_vendas"
+          },
+          {
+            "name": "in_fechada",
+            "dataType": "int64",
+            "sourceColumn": "in_fechada"
+          },
+          {
+            "name": "dt_alteracao",
+            "dataType": "dateTime",
+            "sourceColumn": "dt_alteracao"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/synw-tf-bia sql azuresynapse net;syndp_tf_bia_edw\",",
+                "    dbo_vw_d_filial = Source{[Schema=\"dbo\",Item=\"vw_d_filial\"]}[Data]",
+                "in",
+                "    dbo_vw_d_filial"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Calculos",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Calculos",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Calculos]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                "DATATABLE(\"Calculos\",",
+                "STRING, {{\"None\"}})"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Vendas",
+            "expression": " SUM(vw_f_vendas[vl_venda_faturada_liquida])",
+            "formatString": "\"R$\" #,0;-\"R$\" #,0;\"R$\" #,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1046\" DisplayName=\"R$ Portuguese (Brazil)\" Symbol=\"R$\" PositivePattern=\"2\" NegativePattern=\"9\" /></Format>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "d_tempo",
+        "columns": [
+          {
+            "name": "sk_tempo",
+            "dataType": "int64",
+            "sourceColumn": "sk_tempo"
+          },
+          {
+            "name": "dt_data",
+            "dataType": "dateTime",
+            "sourceColumn": "dt_data"
+          },
+          {
+            "name": "nr_ano",
+            "dataType": "int64",
+            "sourceColumn": "nr_ano"
+          },
+          {
+            "name": "nr_mes",
+            "dataType": "int64",
+            "sourceColumn": "nr_mes"
+          },
+          {
+            "name": "nr_dia",
+            "dataType": "int64",
+            "sourceColumn": "nr_dia"
+          },
+          {
+            "name": "nr_dia_semana",
+            "dataType": "int64",
+            "sourceColumn": "nr_dia_semana"
+          },
+          {
+            "name": "nr_dia_ano",
+            "dataType": "int64",
+            "sourceColumn": "nr_dia_ano"
+          },
+          {
+            "name": "nr_quinzena",
+            "dataType": "int64",
+            "sourceColumn": "nr_quinzena"
+          },
+          {
+            "name": "nr_bimestre",
+            "dataType": "int64",
+            "sourceColumn": "nr_bimestre"
+          },
+          {
+            "name": "nr_trimestre",
+            "dataType": "int64",
+            "sourceColumn": "nr_trimestre"
+          },
+          {
+            "name": "nr_semestre",
+            "dataType": "int64",
+            "sourceColumn": "nr_semestre"
+          },
+          {
+            "name": "in_ano_bissexto",
+            "dataType": "string",
+            "sourceColumn": "in_ano_bissexto"
+          },
+          {
+            "name": "in_dia_util",
+            "dataType": "string",
+            "sourceColumn": "in_dia_util"
+          },
+          {
+            "name": "in_fim_semana",
+            "dataType": "string",
+            "sourceColumn": "in_fim_semana"
+          },
+          {
+            "name": "in_feriado",
+            "dataType": "string",
+            "sourceColumn": "in_feriado"
+          },
+          {
+            "name": "in_pre_feriado",
+            "dataType": "string",
+            "sourceColumn": "in_pre_feriado"
+          },
+          {
+            "name": "in_pos_feriado",
+            "dataType": "string",
+            "sourceColumn": "in_pos_feriado"
+          },
+          {
+            "name": "ds_nome_feriado",
+            "dataType": "string",
+            "sourceColumn": "ds_nome_feriado"
+          },
+          {
+            "name": "ds_nome_dia_semana",
+            "dataType": "string",
+            "sourceColumn": "ds_nome_dia_semana"
+          },
+          {
+            "name": "ds_nome_dia_semana_abrev",
+            "dataType": "string",
+            "sourceColumn": "ds_nome_dia_semana_abrev"
+          },
+          {
+            "name": "ds_nome_mes",
+            "dataType": "string",
+            "sourceColumn": "ds_nome_mes"
+          },
+          {
+            "name": "ds_nome_mes_abrev",
+            "dataType": "string",
+            "sourceColumn": "ds_nome_mes_abrev"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/synw-tf-bia sql azuresynapse net;syndp_tf_bia_edw\",",
+                "    dbo_d_tempo = Source{[Schema=\"dbo\",Item=\"d_tempo\"]}[Data]",
+                "in",
+                "    dbo_d_tempo"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "fdf27b5f-a33f-435a-a6bc-53eeea030b72",
+        "toTable": "vw_d_filial",
+        "toColumn": "sk_filial",
+        "fromTable": "vw_f_vendas",
+        "fromColumn": "fk_tempo_venda"
+      },
+      {
+        "name": "68c85a64-351a-47ba-a269-cf2f3741ffe4",
+        "toTable": "d_tempo",
+        "toColumn": "sk_tempo",
+        "fromTable": "vw_f_vendas",
+        "fromColumn": "fk_tempo_venda"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  }
+}
