@@ -22,17 +22,19 @@
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == '' ">
-    <DeploymentServerName>asazure://eastus.asazure.windows.net/astfbia:rw</DeploymentServerName>
+    <DeploymentServerName>asazure://eastus.asazure.windows.net/astfbia</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
     <DeploymentServerDatabase>versionamento</DeploymentServerDatabase>
-    <DeploymentServerCubeName>cubox</DeploymentServerCubeName>
+    <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="cubox.bim">

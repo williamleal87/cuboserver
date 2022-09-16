@@ -1,5 +1,5 @@
 {
-  "name": "versionamento",
+  "name": "SemanticModel",
   "compatibilityLevel": 1500,
   "model": {
     "name": "cubox",
@@ -374,6 +374,10 @@
                 "value": "<Format Format=\"Currency\"><Currency LCID=\"1046\" DisplayName=\"R$ Portuguese (Brazil)\" Symbol=\"R$\" PositivePattern=\"2\" NegativePattern=\"9\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "pecas",
+            "expression": " sum(vw_f_vendas[qt_pecas_liquida])"
           }
         ]
       },
@@ -512,17 +516,17 @@
     "relationships": [
       {
         "name": "fdf27b5f-a33f-435a-a6bc-53eeea030b72",
-        "toTable": "vw_d_filial",
-        "toColumn": "sk_filial",
         "fromTable": "vw_f_vendas",
-        "fromColumn": "fk_tempo_venda"
+        "fromColumn": "fk_tempo_venda",
+        "toTable": "vw_d_filial",
+        "toColumn": "sk_filial"
       },
       {
         "name": "68c85a64-351a-47ba-a269-cf2f3741ffe4",
-        "toTable": "d_tempo",
-        "toColumn": "sk_tempo",
         "fromTable": "vw_f_vendas",
-        "fromColumn": "fk_tempo_venda"
+        "fromColumn": "fk_tempo_venda",
+        "toTable": "d_tempo",
+        "toColumn": "sk_tempo"
       }
     ],
     "annotations": [
@@ -531,5 +535,6 @@
         "value": "600"
       }
     ]
-  }
+  },
+  "id": "SemanticModel"
 }
